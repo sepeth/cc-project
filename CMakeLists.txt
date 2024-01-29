@@ -1,14 +1,17 @@
 cmake_minimum_required(VERSION 3.20)
-project(Example)
 
 # use homebrew installed llvm
-set(CMAKE_CXX_COMPILER /opt/homebrew/opt/llvm/bin/clang++)
-link_directories(/opt/homebrew/opt/llvm/lib)
-include_directories(/opt/homebrew/opt/llvm/include)
+set(llvm_dir /opt/homebrew/opt/llvm)
+set(CMAKE_C_COMPILER ${llvm_dir}/bin/clang)
+set(CMAKE_CXX_COMPILER ${llvm_dir}/bin/clang++)
+link_directories(${llvm_dir}/lib)
+include_directories(${llvm_dir}/include)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-add_executable(main main.cc)
 
+project(Example)
 find_package(Catch2 3 REQUIRED)
+
+add_executable(main main.cc)
 target_link_libraries(main PRIVATE Catch2::Catch2WithMain)
