@@ -10,8 +10,9 @@ include_directories(${llvm_dir}/include)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(Example)
+project(main)
 find_package(Catch2 3 REQUIRED)
 
-add_executable(main main.cc)
-target_link_libraries(main PRIVATE Catch2::Catch2WithMain)
+aux_source_directory(. SRC_LIST)
+add_executable(${PROJECT_NAME} ${SRC_LIST})
+target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2WithMain)
