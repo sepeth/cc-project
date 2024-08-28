@@ -1,3 +1,6 @@
+# Garbage files
+.DS_Store
+
 # clangd creates this
 /.cache
 
