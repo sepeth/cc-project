@@ -14,6 +14,6 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 project(main)
 find_package(Catch2 3 REQUIRED)
 
-aux_source_directory(. SRC_LIST)
-add_executable(${PROJECT_NAME} ${SRC_LIST})
-target_link_libraries(${PROJECT_NAME} PRIVATE Catch2::Catch2WithMain)
+link_libraries(Catch2::Catch2WithMain)
+
+add_executable(main main.cc)
